@@ -5,7 +5,13 @@ inquirer.prompt([
     {
         type: 'input',
         name: 'svgContent',
-        message: 'Enter up to three characters'
+        message: 'Enter up to three characters',
+        validate: function(input) {
+            if (input.length > 3) {
+                return "Please enter up to three characters.";
+            }
+            return true;
+        }
     },
     {
         type: 'input',
@@ -24,7 +30,7 @@ inquirer.prompt([
         message: 'Please enter your preferred shape color'
     }
 ]).then(answers => {
-    const svgContent = answers.svgContent;
+    const svgContent = answers.svgContent.substring(0, 3);
     const svgColor = answers.svgColor;
     const svgShape = answers.svgShape;
     const svgShapeColor = answers.svgShapeColor;
