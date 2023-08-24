@@ -25,7 +25,22 @@ inquirer.prompt([
     }
 ]).then(answers => {
     const svgContent = answers.svgContent;
-    const generatedSVG = `<svg>${svgContent}</svg>`;
+    const svgColor = answers.svgColor;
+    const svgShape = answers.svgShape;
+    const svgShapeColor = answers.svgShapeColor;
+    
+    let shapeSVG;
+
+    if (svgShape === 'circle') {
+        shapeSVG = '<circle cx="50" cy="50" r="40" />';
+      } else if (svgShape === 'square') {
+        shapeSVG = '<rect x="10" y="10" width="80" height="80" />';
+      } else if (svgShape === 'triangle') {
+        shapeSVG = '<polygon points="50,10 90,90 10,90" />';
+      }
+
+
+
 
     fs.writeFile('output.svg', generatedSVG, 'utf8', (err) => {
         if (err) {
