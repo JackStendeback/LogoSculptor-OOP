@@ -47,11 +47,15 @@ inquirer.prompt([
     const svgShape = answers.svgShape;
     const svgShapeColor = answers.svgShapeColor;
 
-    let shapeSVG = '';
     let textX = 0;
     let textY = 0;
 
 
+
+function generateShapeSVG(svgShape, svgShapeColor) {
+
+    let shapeSVG = '';
+    
     if (svgShape === 'circle') {
         shapeSVG = `<circle cx="150" cy="100" r="40" fill="${svgShapeColor}" />`;
         textX = 150;
@@ -65,6 +69,8 @@ inquirer.prompt([
         textX = 150;
         textY = 130;
     }
+    return shapeSVG;
+}
 
     const generatedSVG = `<svg width="300" height="200">
     ${shapeSVG}
