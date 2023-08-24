@@ -29,20 +29,23 @@ inquirer.prompt([
     const svgShape = answers.svgShape;
     const svgShapeColor = answers.svgShapeColor;
 
-    let shapeSVG;
+    let shapeSVG = '';
+
 
     if (svgShape === 'circle') {
-        shapeSVG = `<circle cx="50" cy="50" r="40" fill="${svgShapeColor}" />`;
-      } else if (svgShape === 'square') {
-        shapeSVG = `<rect x="10" y="10" width="80" height="80" fill="${svgShapeColor}" />`;
-      } else if (svgShape === 'triangle') {
-        shapeSVG = `<polygon points="50,10 90,90 10,90" fill="${svgShapeColor}" />`;
-      }
+        shapeSVG = `<circle cx="50" cy="50" r="40" fill="${svgShapeColor}" />
+                    <text x="10" y="50" fill="${svgColor}">${svgContent}</text>`;
+    } else if (svgShape === 'square') {
+        shapeSVG = `<rect x="10" y="10" width="80" height="80" fill="${svgShapeColor}" />
+                    <text x="10" y="50" fill="${svgColor}">${svgContent}</text>`;
+    } else if (svgShape === 'triangle') {
+        shapeSVG = `<polygon points="50,10 90,90 10,90" fill="${svgShapeColor}" />
+                    <text x="10" y="50" fill="${svgColor}">${svgContent}</text>`;
+    }
 
-      const generatedSVG = `<svg>
-      <text x="10" y="50" fill="${svgColor}">${svgContent}</text>
-      ${shapeSVG}
-      </svg>`;
+    const generatedSVG = `<svg width="100" height="100">
+        ${shapeSVG}
+    </svg>`;
 
     fs.writeFile('output.svg', generatedSVG, 'utf8', (err) => {
         if (err) {
