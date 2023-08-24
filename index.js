@@ -39,13 +39,10 @@ inquirer.prompt([
         shapeSVG = '<polygon points="50,10 90,90 10,90" />';
       }
 
-    const generatedSVG = `<svg>
-        <text x="10" y="50" fill="${svgColor}">${svgContent}</text>
-         <${svgShape} fill="${svgShapeColor}">
-        ${shapeSVG}
-        </${svgShape}>
-        </svg>`;
-
+      const generatedSVG = `<svg>
+      <text x="10" y="50" fill="${svgColor}">${svgContent}</text>
+      ${shapeSVG}
+      </svg>`;
 
     fs.writeFile('output.svg', generatedSVG, 'utf8', (err) => {
         if (err) {
