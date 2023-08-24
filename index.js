@@ -53,17 +53,17 @@ inquirer.prompt([
 
 
     if (svgShape === 'circle') {
-        shapeSVG = `<circle cx="50" cy="50" r="40" fill="${svgShapeColor}" />`;
-        textX = 50;
-        textY = 55;
+        shapeSVG = `<circle cx="150" cy="100" r="40" fill="${svgShapeColor}" />`;
+        textX = 150;
+        textY = 105;
     } else if (svgShape === 'square') {
-        shapeSVG = `<rect x="10" y="10" width="80" height="80" fill="${svgShapeColor}" />`;
-        textX = 50;
-        textY = 55;
+        shapeSVG = `<rect x="110" y="60" width="80" height="80" fill="${svgShapeColor}" />`;
+        textX = 150;
+        textY = 105;
     } else if (svgShape === 'triangle') {
-        shapeSVG = `<polygon points="50,10 90,90 10,90" fill="${svgShapeColor}" />`;
-        textX = 50;
-        textY = 70;
+        shapeSVG = `<polygon points="150,20 230,180 70,180" fill="${svgShapeColor}" />`;
+        textX = 150;
+        textY = 130;
     }
 
     const generatedSVG = `<svg width="300" height="200">
