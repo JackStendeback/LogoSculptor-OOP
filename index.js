@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+// import inquirer from 'inquirer';
+// import fs from 'fs';
+
 async function getUserInput() {
     return inquirer.prompt([
         {
@@ -45,13 +48,7 @@ async function getUserInput() {
     ]);
 }
 
-getUserInput().then(answers => {
-    const svgContent = answers.svgContent.substring(0, 3);
-    const svgColor = answers.svgColor;
-    const svgShape = answers.svgShape;
-    const svgShapeColor = answers.svgShapeColor;
-
-    // Variables for shapeSVG, textX, and textY should be declared here
+function generateShapeSVG(svgShape, svgShapeColor) {
     let shapeSVG = '';
     let textX = 0;
     let textY = 0;
@@ -70,6 +67,17 @@ getUserInput().then(answers => {
         textY = 130;
     }
 
+    return { shapeSVG, textX, textY };
+}
+
+function generateSVG(answers) {
+    const svgContent = answers.svgContent.substring(0, 3);
+    const svgColor = answers.svgColor;
+    const svgShape = answers.svgShape;
+    const svgShapeColor = answers.svgShapeColor;
+
+    const { shapeSVG, textX, textY } = generateShapeSVG(svgShape, svgShapeColor);
+
     const generatedSVG = `<svg width="300" height="200">
     ${shapeSVG}
     <text x="${textX}" y="${textY}" fill="${svgColor}" text-anchor="middle">${svgContent}</text>
@@ -82,6 +90,7 @@ getUserInput().then(answers => {
             console.log('Generated logo.svg.');
         }
     });
-});
+}
 
+module.exports = { getUserInput, generateSVG };
 
