@@ -30,23 +30,29 @@ inquirer.prompt([
     const svgShapeColor = answers.svgShapeColor;
 
     let shapeSVG = '';
+    let textX = 0;
+    let textY = 0;
 
 
     if (svgShape === 'circle') {
-        shapeSVG = `<circle cx="50" cy="50" r="40" fill="${svgShapeColor}" />
-                    <text x="10" y="50" fill="${svgColor}">${svgContent}</text>`;
+        shapeSVG = `<circle cx="50" cy="50" r="40" fill="${svgShapeColor}" />`;
+        textX = 50;
+        textY = 55;
     } else if (svgShape === 'square') {
-        shapeSVG = `<rect x="10" y="10" width="80" height="80" fill="${svgShapeColor}" />
-                    <text x="10" y="50" fill="${svgColor}">${svgContent}</text>`;
+        shapeSVG = `<rect x="10" y="10" width="80" height="80" fill="${svgShapeColor}" />`;
+        textX = 50;
+        textY = 55;
     } else if (svgShape === 'triangle') {
-        shapeSVG = `<polygon points="50,10 90,90 10,90" fill="${svgShapeColor}" />
-                    <text x="10" y="50" fill="${svgColor}">${svgContent}</text>`;
+        shapeSVG = `<polygon points="50,10 90,90 10,90" fill="${svgShapeColor}" />`;
+        textX = 50;
+        textY = 55;
     }
 
     const generatedSVG = `<svg width="100" height="100">
-        ${shapeSVG}
+    ${shapeSVG}
+    <text x="${textX}" y="${textY}" fill="${svgColor}" text-anchor="middle">${svgContent}</text>
     </svg>`;
-
+    
     fs.writeFile('output.svg', generatedSVG, 'utf8', (err) => {
         if (err) {
           console.error('Error writing SVG file:', err);
