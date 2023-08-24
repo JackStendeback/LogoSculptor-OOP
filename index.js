@@ -48,7 +48,7 @@ inquirer.prompt([
         textY = 70;
     }
 
-    const generatedSVG = `<svg width="100" height="100">
+    const generatedSVG = `<svg width="300" height="200">
     ${shapeSVG}
     <text x="${textX}" y="${textY}" fill="${svgColor}" text-anchor="middle">${svgContent}</text>
     </svg>`;
@@ -57,7 +57,7 @@ inquirer.prompt([
         if (err) {
           console.error('Error writing SVG file:', err);
         } else {
-          console.log('SVG file generated successfully.');
+          console.log('Generated logo.svg successfully.');
         }
       });
     });
