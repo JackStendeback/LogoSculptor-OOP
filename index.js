@@ -45,7 +45,7 @@ inquirer.prompt([
     } else if (svgShape === 'triangle') {
         shapeSVG = `<polygon points="50,10 90,90 10,90" fill="${svgShapeColor}" />`;
         textX = 50;
-        textY = 75;
+        textY = 70;
     }
 
     const generatedSVG = `<svg width="100" height="100">
