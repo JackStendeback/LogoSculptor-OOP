@@ -53,7 +53,7 @@ inquirer.prompt([
     <text x="${textX}" y="${textY}" fill="${svgColor}" text-anchor="middle">${svgContent}</text>
     </svg>`;
     
-    fs.writeFile('output.svg', generatedSVG, 'utf8', (err) => {
+    fs.writeFile('logo.svg', generatedSVG, 'utf8', (err) => {
         if (err) {
           console.error('Error writing SVG file:', err);
         } else {
