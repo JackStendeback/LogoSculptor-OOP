@@ -1,0 +1,4 @@
+<svg width="300" height="200">
+    <circle cx="50" cy="50" r="40" fill="Blue" />
+    <text x="50" y="55" fill="#AA0564" text-anchor="middle">SUM</text>
+    </svg>
