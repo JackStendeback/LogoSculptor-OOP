@@ -16,7 +16,13 @@ inquirer.prompt([
     {
         type: 'input',
         name: 'svgColor',
-        message:  'Please enter a color'
+        message:  'Please enter a color or hexadecimal value',
+        validate: function(input) {
+            if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(input) || /^[a-zA-Z]+$/.test(input)) {
+                return true;
+            }
+            return "Please enter a valid color keyword or hexadecimal value.";
+        }
     },
     {
         type: 'list',
@@ -27,7 +33,13 @@ inquirer.prompt([
     {
         type: 'input',
         name: 'svgShapeColor',
-        message: 'Please enter your preferred shape color'
+        message: 'Please enter your preferred shape color',
+        validate: function(input) {
+            if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(input) || /^[a-zA-Z]+$/.test(input)) {
+                return true;
+            }
+            return "Please enter a valid color keyword or hexadecimal value.";
+        }
     }
 ]).then(answers => {
     const svgContent = answers.svgContent.substring(0, 3);
